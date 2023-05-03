@@ -1,4 +1,4 @@
-# Epicodus Testing Standards
+# Epicodus Testing Standards and Best Practices
  What does "thoroughly tested" mean. 
 
 ## For Functions
@@ -209,3 +209,20 @@ describe('Dog', () => {
 ```
 
 - These tests are valuable. They alert us to the fact that we may want to add some additional logic to the method to prevent unexpected behavior. 
+
+## Best Practices for Testing
+- **Write tests for distinct behaviors.** Often a function just needs one test, because it does one thing. However, if our function does multiple things, we should consider having a test for each behavior. This improves how easy to understand our code and tests are. It's OK to have multiple expectations for a single test. However, if a test has many expectations it can be a red flag that the test may cover multiple distinct behaviors and may need to be broken into multiple tests to improve comprehension.
+
+- **Use Describe blocks to improve comprehension of your tests.** You can use Describe blocks for entire object types or for individual methods and functions, depending on how complicated each is. Similar to writing tests for distinct behaviors to clearly communicate the functionality of your code, Describe blocks are meant to improve organization and comprehension of your test. If a class is more complex, you may want to use a Describe block for each method instead of just the class.
+
+- **Write the test first, not the code.** We've already covered many of the reasons why we should write our tests before we write any code. This is the cornerstone of TDD because it's test-driven, not code-driven. We won't reiterate all the reasons we should write tests first as we've covered that elsewhere.
+
+- **Write just enough of a function or method to get the code to fail.** We can't just write a test, run it, and move on. That would be a bad fail. If we are testing a function, for instance, we need to at least add the function keyword and the name of the function. Our test should at least return how our expectation wasn't met — such as by stating the expected result and returning the actual result (such as undefined because we haven't written a function body yet).
+
+- **Keep the code in your test to a minimum.** In your tests, you should only write code that's required to run the piece of business logic that you are testing for. This usually involves invoking the business logic function you are testing and not much more. Adding more code than that can create problems by introducing bugs that are unrelated to our business logic. We want to isolate problems in our code, not create more problems by adding unnecessary code in our tests.
+
+- **Read the Jest output for failing tests.** It's easy to just run a test, see that it's red, and assume that it's a good fail. It's tempting to be in a rush to write the code, especially if we're excited about it or have an idea about how to implement it. But just because it's red doesn't mean it's a good fail.
+
+- **Always fix bad fails before moving onto the code.** TDD means having a good fail before writing the code to pass the test. It doesn't mean writing a test, having a bad fail, and then writing some code. That is actually a recipe for disaster. We'll often see students looking for bugs in the wrong places when this happens — or just being utterly confused because their tests aren't pointing them in the right direction.
+
+- **Always commit your code after each passing test.** This is part of having a strong commit history. Also, if you break your code and can't get it working again, you can always return to a commit where all tests are passing.
