@@ -198,13 +198,13 @@ describe('Dog', () => {
   test('providing a string number as an argument to the eat() method should not alter any properties of a Dog object', () => {
     dog1.eat("5");
     expect(dog1.weight).toEqual(10);
-    expect(dog1.hungry).toEqual(false);
+    expect(dog1.hungry).toEqual(true);
   }); // This test fails. 
 
   test('providing a string as an argument to the eat() method should not alter any properties of a Dog object', () => {
    dog1.eat("food");
     expect(dog1.weight).toEqual(10);
-    expect(dog1.hungry).toEqual(false);
+    expect(dog1.hungry).toEqual(true);
   }) // This test also fails.
 ```
 
